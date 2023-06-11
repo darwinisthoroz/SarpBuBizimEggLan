@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class OtherPlayer : MonoBehaviour
 {
 
     public float moveSpeed = 5f;
@@ -40,18 +40,18 @@ public class PlayerMovement : MonoBehaviour
     {
     float moveX = 0f;
 
-    if (Input.GetKey(KeyCode.RightArrow))
+    if (Input.GetKey(KeyCode.D))
     {
         moveX = moveSpeed;
     }
-    else if (Input.GetKey(KeyCode.LeftArrow))
+    else if (Input.GetKey(KeyCode.A))
     {
         moveX = -moveSpeed;
     }
 
     rb.velocity = new Vector2(moveX, rb.velocity.y);
 
-    if (!Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
+    if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
     {
         rb.velocity = new Vector2(0f, rb.velocity.y);
     }
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if (jumpCount < maxJumpCount)
             {
@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (transform.position.y < minY)
         {
             RespawnPlayer();
-            PlayerMovement.isFacingRight = true;
+            OtherPlayer.isFacingRight = true;
             Guns.Pistol = true;
             Guns.Shotgun = false;
             Guns.Sniper = false;
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             Guns.Smg = false;
             Guns.Minigun = false;
         }
-        if(Input.GetKeyDown(KeyCode.P) && Time.time > NextFire)
+        if(Input.GetKeyDown(KeyCode.T) && Time.time > NextFire)
         {
             if (isFacingRight)
             {
@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKey(KeyCode.Z))
         {
             if (isFacingRight)
             {
