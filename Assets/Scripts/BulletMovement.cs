@@ -15,6 +15,7 @@ public class BulletMovement : MonoBehaviour
     public float MinigunPush;
     public float shotgunpush;
     public float burstpush;
+    public float ypush;
     private float lifetime = 1.5f;
     private Vector2 direction;
     private PlayerMovement playerMovement;
@@ -47,6 +48,7 @@ public class BulletMovement : MonoBehaviour
        if(other.gameObject.CompareTag("Player"))
          {
             Destroy(this.gameObject);
+            other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, ypush), ForceMode2D.Impulse);
             if (Guns.Pistol)
             {
                 Rigidbody2D rb = other.GetComponent<Rigidbody2D>();

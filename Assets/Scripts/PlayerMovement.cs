@@ -11,13 +11,26 @@ public class PlayerMovement : MonoBehaviour
     public int maxJumpCount = 2;
     public static bool isFacingRight = true;
     private int jumpCount = 0;
-    private Rigidbody2D rb;
+    public static Rigidbody2D rb;
     public float minY = -10f;
     public Transform respawnPoint;
     public float JumpTime = 0.5f;
     private float NextJump = 0.0f;
+    //--------------------------
+    public float PistolTepme = 5.0f;
+    public float AssaultTepme;
+    public float SniperTepme;
+    public float SmgTepme;
+    public float MinigunTepme;
+    public float shotgunTepme;
+    //-------------------------
+    private float NextFire = 0.0f;
+    private float pistoltep = 0.3f;
+    private float shotguntep = 1.0f;
+    private float snipertep = 1.5f;
     private void Start()
     {
+        NextFire = Time.time;
         NextJump = Time.time;
         isFacingRight = true;
         rb = GetComponent<Rigidbody2D>();
@@ -58,6 +71,90 @@ public class PlayerMovement : MonoBehaviour
             Guns.Smg = false;
             Guns.Minigun = false;
         }
+        if(Input.GetKeyDown(KeyCode.Z) && Time.time > NextFire)
+        {
+            if (isFacingRight)
+            {
+                if (Guns.Pistol)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.left * PistolTepme, ForceMode2D.Impulse);
+                    NextFire = Time.time + pistoltep;
+                }
+                if (Guns.Shotgun)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.left * shotgunTepme, ForceMode2D.Impulse);
+                    NextFire = Time.time + shotguntep;
+                }
+                if (Guns.Sniper)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.left * SniperTepme, ForceMode2D.Impulse);
+                    NextFire = Time.time + snipertep;
+                }
+            }
+            else
+            {
+                if (Guns.Pistol)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.right * PistolTepme, ForceMode2D.Impulse);
+                    NextFire = Time.time + pistoltep;
+                }
+                if (Guns.Shotgun)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.right * shotgunTepme, ForceMode2D.Impulse);
+                    NextFire = Time.time + shotguntep;
+                }
+                if (Guns.Sniper)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.right * SniperTepme, ForceMode2D.Impulse);
+                    NextFire = Time.time + snipertep;
+                }
+            }
+        }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            if (isFacingRight)
+            {
+                if (Guns.Smg)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.left * SmgTepme, ForceMode2D.Impulse);
+                }
+                if (Guns.Assault)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.left * AssaultTepme, ForceMode2D.Impulse);
+                }
+                if (Guns.Minigun)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.left * MinigunTepme, ForceMode2D.Impulse);
+                }
+            }
+            else
+            {
+                if (Guns.Smg)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.right * SmgTepme, ForceMode2D.Impulse);
+                }
+                if (Guns.Assault)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.right * AssaultTepme, ForceMode2D.Impulse);
+                }
+                if (Guns.Minigun)
+                {
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    rb.AddForce(Vector2.right * MinigunTepme, ForceMode2D.Impulse);
+                }
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -85,6 +182,7 @@ public class PlayerMovement : MonoBehaviour
             Guns.Assault = false;
             Guns.Smg = false;
             Guns.Minigun = false;
+            Guns.bulletcount = 0;
         }
         else if (other.CompareTag("Sniper"))
         {
@@ -96,6 +194,7 @@ public class PlayerMovement : MonoBehaviour
             Guns.Assault = false;
             Guns.Smg = false;
             Guns.Minigun = false;
+            Guns.bulletcount = 0;
         }
         else if (other.CompareTag("Assault"))
         {
@@ -107,6 +206,7 @@ public class PlayerMovement : MonoBehaviour
             Guns.Assault = true;
             Guns.Smg = false;
             Guns.Minigun = false;
+            Guns.bulletcount = 0;
         }
         else if (other.CompareTag("Smg"))
         {
@@ -118,6 +218,7 @@ public class PlayerMovement : MonoBehaviour
             Guns.Assault = false;
             Guns.Smg = true;
             Guns.Minigun = false;
+            Guns.bulletcount = 0;
         }
         else if (other.CompareTag("Minigun"))
         {
@@ -129,6 +230,7 @@ public class PlayerMovement : MonoBehaviour
             Guns.Assault = false;
             Guns.Smg = false;
             Guns.Minigun = true;
+            Guns.bulletcount = 0;
         }
     }
     private void RespawnPlayer()

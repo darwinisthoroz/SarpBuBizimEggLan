@@ -31,8 +31,11 @@ public class Guns : MonoBehaviour
     public float SmgFireRate = 0.5f;
     public float MinigunFireRate = 5f;
     private float NextFire = 0.0f;
+    //*********----------------------*****
+    public static int bulletcount;
+    
+    
 
-   
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +63,7 @@ public class Guns : MonoBehaviour
                 NextFire = Time.time + PistolFireRate;
                 Instantiate(Bulletprefab, transform.position, Bulletprefab.transform.rotation);
                 Fire();
+              
             }
             else if (Shotgun)
             {
@@ -68,14 +72,28 @@ public class Guns : MonoBehaviour
                 Instantiate(Bulletprefab_Shotgun[0], transform.position, Bulletprefab_Shotgun[0].transform.rotation);
                 Instantiate(Bulletprefab_Shotgun[1], transform.position, Bulletprefab_Shotgun[1].transform.rotation);
                 Instantiate(Bulletprefab_Shotgun[2], transform.position, Bulletprefab_Shotgun[2].transform.rotation);
+                bulletcount++;
                 Fire();
+                if(bulletcount >= 16)
+                {
+                    Shotgun = false;
+                    Pistol = true;
+                    bulletcount = 0;
+                }
             }
            else if (Sniper == true)
             {
                 
                 NextFire = Time.time + SniperFireRate;
                 Instantiate(Bulletprefab, transform.position, Bulletprefab.transform.rotation);
+                bulletcount++;
                 Fire();
+                if (bulletcount >= 10)
+                {
+                    Sniper = false;
+                    Pistol = true;
+                    bulletcount = 0;
+                }
             }
         }
         if(Input.GetKey(KeyCode.Z) && Time.time > NextFire)
@@ -84,15 +102,29 @@ public class Guns : MonoBehaviour
             {
                 
                 Instantiate(Bulletprefab, transform.position, Bulletprefab.transform.rotation);
+                bulletcount++;
                 NextFire = Time.time + AssaultFireRate;
                 Fire();
+                if (bulletcount >= 60)
+                {
+                    Assault = false;
+                    Pistol = true;
+                    bulletcount = 0;
+                }
             }
             else if (Smg == true)
             {
                 
                 NextFire = Time.time + SmgFireRate;
                 Instantiate(Bulletprefab, transform.position, Bulletprefab.transform.rotation);
+                bulletcount++;
                 Fire();
+                if (bulletcount >= 80)
+                {
+                    Smg = false;
+                    Pistol = true;
+                    bulletcount = 0;
+                }
             }
            /* else if (Minigun == true)
             {

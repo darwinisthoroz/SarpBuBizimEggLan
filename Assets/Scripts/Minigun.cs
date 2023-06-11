@@ -27,7 +27,13 @@ public class Minigun : MonoBehaviour
                 NextFire = Time.time + MinigunFireRate;
                 Instantiate(Bulletprefab2, transform.position, Bulletprefab2.transform.rotation);
                 Fire();
-
+                Guns.bulletcount++;
+                if (Guns.bulletcount >= 100)
+                {
+                    Guns.Minigun = false;
+                    Guns.Pistol = true;
+                    Guns.bulletcount = 0;
+                }
             }
         }
     }

@@ -163,7 +163,7 @@ MonoBehaviour:
   - {fileID: 2080910449}
   - {fileID: 1866895430}
   - {fileID: 1653865632}
-  spawnInterval: 30
+  spawnInterval: 40
 --- !u!4 &77110452
 Transform:
   m_ObjectHideFlags: 0
@@ -858,8 +858,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 0.5340637
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1902,6 +1902,12 @@ MonoBehaviour:
   minY: -10
   respawnPoint: {fileID: 2027989696}
   JumpTime: 1
+  PistolTepme: 10
+  AssaultTepme: 3
+  SniperTepme: 30
+  SmgTepme: 2
+  MinigunTepme: 4
+  shotgunTepme: 20
 --- !u!1 &1653865631
 GameObject:
   m_ObjectHideFlags: 0
