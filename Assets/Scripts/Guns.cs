@@ -51,7 +51,7 @@ public class Guns : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > NextFire)
+        if (Input.GetKeyDown(KeyCode.Z) && Time.time > NextFire)
         {
         
             if (Pistol)
@@ -78,7 +78,7 @@ public class Guns : MonoBehaviour
                 Fire();
             }
         }
-        if(Input.GetKey(KeyCode.Mouse0) && Time.time > NextFire)
+        if(Input.GetKey(KeyCode.Z) && Time.time > NextFire)
         {
             if (Assault == true)
             {
@@ -102,6 +102,8 @@ public class Guns : MonoBehaviour
             }
            */
         }
+        // BURASI DENEME AMAÇLI , ONLÝNE GEÇERKEN SÝL //
+        //----------------------------------------------
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Pistol = true;
@@ -179,7 +181,7 @@ public class Guns : MonoBehaviour
             Minigun = false;
             
         }
-       
+     //----------------------------------------------  
     }
 
     void Fire()

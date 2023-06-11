@@ -19,9 +19,11 @@ public class BulletMovement : MonoBehaviour
     private Vector2 direction;
     private PlayerMovement playerMovement;
     private Guns guns;
+    public ParticleSystem Kan;
     // Start is called before the first frame update
     void Start()
     {
+        Kan = GetComponent<ParticleSystem>();
         Invoke("DestroyBullet", lifetime);
         if(PlayerMovement.isFacingRight)
         {

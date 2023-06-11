@@ -14,8 +14,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     public float minY = -10f;
     public Transform respawnPoint;
+    public float JumpTime = 0.5f;
+    private float NextJump = 0.0f;
     private void Start()
     {
+        NextJump = Time.time;
         isFacingRight = true;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -35,10 +38,11 @@ public class PlayerMovement : MonoBehaviour
         Vector2 movement = new Vector2(moveX * moveSpeed, rb.velocity.y);
         rb.velocity = movement;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (jumpCount < maxJumpCount)
             {
+                NextJump = Time.time + JumpTime;
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                 jumpCount++;
             }
