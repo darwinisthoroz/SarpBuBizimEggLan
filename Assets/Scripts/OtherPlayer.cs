@@ -79,97 +79,15 @@ public class OtherPlayer : MonoBehaviour
         {
             RespawnPlayer();
             OtherPlayer.isFacingRight = true;
-            Guns.Pistol = true;
-            Guns.Shotgun = false;
-            Guns.Sniper = false;
-            Guns.Assault = false;
-            Guns.Smg = false;
-            Guns.Minigun = false;
+           OtherGuns.Pistol = true;
+           OtherGuns.Shotgun = false;
+           OtherGuns.Sniper = false;
+           OtherGuns.Assault = false;
+           OtherGuns.Smg = false;
+           OtherGuns.Minigun = false;
         }
-        if(Input.GetKeyDown(KeyCode.T) && Time.time > NextFire)
-        {
-            if (isFacingRight)
-            {
-                if (Guns.Pistol)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.left * PistolTepme, ForceMode2D.Impulse);
-                    NextFire = Time.time + pistoltep;
-                }
-                if (Guns.Shotgun)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.left * shotgunTepme, ForceMode2D.Impulse);
-                    NextFire = Time.time + shotguntep;
-                }
-                if (Guns.Sniper)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.left * SniperTepme, ForceMode2D.Impulse);
-                    NextFire = Time.time + snipertep;
-                }
-            }
-            else
-            {
-                if (Guns.Pistol)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.right * PistolTepme, ForceMode2D.Impulse);
-                    NextFire = Time.time + pistoltep;
-                }
-                if (Guns.Shotgun)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.right * shotgunTepme, ForceMode2D.Impulse);
-                    NextFire = Time.time + shotguntep;
-                }
-                if (Guns.Sniper)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.right * SniperTepme, ForceMode2D.Impulse);
-                    NextFire = Time.time + snipertep;
-                }
-            }
-        }
-        if (Input.GetKey(KeyCode.Z))
-        {
-            if (isFacingRight)
-            {
-                if (Guns.Smg)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.left * SmgTepme, ForceMode2D.Impulse);
-                }
-                if (Guns.Assault)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.left * AssaultTepme, ForceMode2D.Impulse);
-                }
-                if (Guns.Minigun)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.left * MinigunTepme, ForceMode2D.Impulse);
-                }
-            }
-            else
-            {
-                if (Guns.Smg)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.right * SmgTepme, ForceMode2D.Impulse);
-                }
-                if (Guns.Assault)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.right * AssaultTepme, ForceMode2D.Impulse);
-                }
-                if (Guns.Minigun)
-                {
-                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                    rb.AddForce(Vector2.right * MinigunTepme, ForceMode2D.Impulse);
-                }
-            }
-        }
+        
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -191,61 +109,61 @@ public class OtherPlayer : MonoBehaviour
         {
             Debug.Log("SHOTGUN");
             Destroy(other.gameObject);
-            Guns.Pistol = false;
-            Guns.Shotgun = true;
-            Guns.Sniper = false;
-            Guns.Assault = false;
-            Guns.Smg = false;
-            Guns.Minigun = false;
-            Guns.bulletcount = 0;
+           OtherGuns.Pistol = false;
+           OtherGuns.Shotgun = true;
+           OtherGuns.Sniper = false;
+           OtherGuns.Assault = false;
+           OtherGuns.Smg = false;
+           OtherGuns.Minigun = false;
+           OtherGuns.bulletcount = 0;
         }
         else if (other.CompareTag("Sniper"))
         {
             Debug.Log("SN�PER");
             Destroy(other.gameObject);
-            Guns.Pistol = false;
-            Guns.Shotgun = false;
-            Guns.Sniper = true;
-            Guns.Assault = false;
-            Guns.Smg = false;
-            Guns.Minigun = false;
-            Guns.bulletcount = 0;
+            OtherGuns.Pistol = false;
+            OtherGuns.Shotgun = false;
+            OtherGuns.Sniper = true;
+            OtherGuns.Assault = false;
+            OtherGuns.Smg = false;
+            OtherGuns.Minigun = false;
+            OtherGuns.bulletcount = 0;
         }
         else if (other.CompareTag("Assault"))
         {
             Debug.Log("ASSAULT");
             Destroy(other.gameObject);
-            Guns.Pistol = false;
-            Guns.Shotgun = false;
-            Guns.Sniper = false;
-            Guns.Assault = true;
-            Guns.Smg = false;
-            Guns.Minigun = false;
-            Guns.bulletcount = 0;
+            OtherGuns.Pistol = false;
+            OtherGuns.Shotgun = false;
+            OtherGuns.Sniper = false;
+            OtherGuns.Assault = true;
+            OtherGuns.Smg = false;
+            OtherGuns.Minigun = false;
+            OtherGuns.bulletcount = 0;
         }
         else if (other.CompareTag("Smg"))
         {
             Debug.Log("SUBMACHINE");
             Destroy(other.gameObject);
-            Guns.Pistol = false;
-            Guns.Shotgun = false;
-            Guns.Sniper = false;
-            Guns.Assault = false;
-            Guns.Smg = true;
-            Guns.Minigun = false;
-            Guns.bulletcount = 0;
+            OtherGuns.Pistol = false;
+            OtherGuns.Shotgun = false;
+            OtherGuns.Sniper = false;
+            OtherGuns.Assault = false;
+            OtherGuns.Smg = true;
+            OtherGuns.Minigun = false;
+            OtherGuns.bulletcount = 0;
         }
         else if (other.CompareTag("Minigun"))
         {
             Debug.Log("MINIGUN");
             Destroy(other.gameObject);
-            Guns.Pistol = false;
-            Guns.Shotgun = false;
-            Guns.Sniper = false;
-            Guns.Assault = false;
-            Guns.Smg = false;
-            Guns.Minigun = true;
-            Guns.bulletcount = 0;
+            OtherGuns.Pistol = false;
+            OtherGuns.Shotgun = false;
+            OtherGuns.Sniper = false;
+            OtherGuns.Assault = false;
+            OtherGuns.Smg = false;
+            OtherGuns.Minigun = true;
+            OtherGuns.bulletcount = 0;
         }
     }
     private void RespawnPlayer()

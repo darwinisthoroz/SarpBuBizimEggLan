@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7231398820479914543
+--- !u!1 &8055004865286845561
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2728980541490133742}
-  - component: {fileID: 4803185305205741254}
-  - component: {fileID: 8167327903667771519}
-  - component: {fileID: -7860570654483643681}
-  - component: {fileID: -2605495060645843129}
+  - component: {fileID: 8055004865286845556}
+  - component: {fileID: 8055004865286845563}
+  - component: {fileID: 8055004865286845562}
+  - component: {fileID: 8055004865286845557}
+  - component: {fileID: 5796033434405261651}
   m_Layer: 0
-  m_Name: GunLootBox (5)
-  m_TagString: Minigun
+  m_Name: oshot1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2728980541490133742
+--- !u!4 &8055004865286845556
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7231398820479914543}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.948, y: 2.1194382, z: -3.51}
-  m_LocalScale: {x: 0.71716, y: 0.71716, z: 0.71716}
+  m_GameObject: {fileID: 8055004865286845561}
+  m_LocalRotation: {x: 0, y: 0, z: 0.03489949, w: 0.99939084}
+  m_LocalPosition: {x: 0, y: 0, z: -3.51}
+  m_LocalScale: {x: 0.05719968, y: 0.05111901, z: 0.3006963}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4803185305205741254
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4}
+--- !u!212 &8055004865286845563
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7231398820479914543}
+  m_GameObject: {fileID: 8055004865286845561}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,87 +76,100 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d7e5effc2f337064e8eff3d7be7d8f37, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9c5c74a0b9b58bd439cf2d9409b2f719, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5, y: 2.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8167327903667771519
+--- !u!61 &8055004865286845562
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7231398820479914543}
+  m_GameObject: {fileID: 8055004865286845561}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.037629604, y: -0.012872636}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 5, y: 2.8}
+    newSize: {x: 5, y: 2.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.8061905, y: 1.6790057}
   m_EdgeRadius: 0
---- !u!50 &-7860570654483643681
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &8055004865286845557
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7231398820479914543}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &-2605495060645843129
-BoxCollider2D:
+  m_GameObject: {fileID: 8055004865286845561}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07858bc7f022c34ab3dfe2d9209d1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  geritepme: 0
+  bulletspeed: 20
+  isFacingRight: 0
+  PistolPush: 5
+  AssaultPush: 4
+  SniperPush: 15
+  SmgPush: 3
+  MinigunPush: 2
+  shotgunpush: 4
+  PistolPush2: 2
+  AssaultPush2: 0
+  SniperPush2: 15
+  SmgPush2: 0
+  MinigunPush2: 0
+  shotgunpush2: 0
+  burstpush: 0
+  ypush: 0
+  Kan: {fileID: 0}
+--- !u!114 &5796033434405261651
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7231398820479914543}
+  m_GameObject: {fileID: 8055004865286845561}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3d8ae5ad91cc1489eb1bcded216acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  geritepme: 10
+  bulletspeed: 30
+  isFacingRight: 0
+  PistolPush: 2
+  AssaultPush: 0
+  SniperPush: 15
+  SmgPush: 0
+  MinigunPush: 0
+  shotgunpush: 0
+  PistolPush2: 2
+  AssaultPush2: 0
+  SniperPush2: 15
+  SmgPush2: 0
+  MinigunPush2: 0
+  shotgunpush2: 0
+  burstpush: 0
+  ypush: 0
+  Kan: {fileID: 0}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
-public class BulletMovement : MonoBehaviour
+public class OtherBulletMovement : MonoBehaviour
 {
     public float geritepme = 10.0f;
     public float bulletspeed = 30.0f;
@@ -24,15 +24,15 @@ public class BulletMovement : MonoBehaviour
     public float ypush;
     private float lifetime = 1.5f;
     private Vector2 direction;
-    private PlayerMovement playerMovement;
-    private Guns guns;
+    private OtherPlayer playerMovement;
+    private OtherGuns guns;
     public ParticleSystem Kan;
     // Start is called before the first frame update
     void Start()
     {
         Kan = GetComponent<ParticleSystem>();
         Invoke("DestroyBullet", lifetime);
-        if(PlayerMovement.isFacingRight)
+        if (OtherPlayer.isFacingRight)
         {
             direction = Vector2.right;
         }
@@ -49,57 +49,57 @@ public class BulletMovement : MonoBehaviour
         transform.Translate(direction * bulletspeed * Time.deltaTime);
 
     }
-     private void OnTriggerEnter2D(Collider2D other)
-     {
-       if(other.gameObject.CompareTag("Player2"))
-         {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player1"))
+        {
             Destroy(this.gameObject);
             other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, ypush), ForceMode2D.Impulse);
-            if (Guns.Pistol)
+            if (OtherGuns.Pistol)
             {
                 Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
                 Vector2 awayFromBullet = other.transform.position - transform.position;
                 rb.AddForce(awayFromBullet * PistolPush, ForceMode2D.Impulse);
             }
-           
-            if (Guns.Sniper)
+
+            if (OtherGuns.Sniper)
             {
                 Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
                 Vector2 awayFromBullet = other.transform.position - transform.position;
                 rb.AddForce(awayFromBullet * SniperPush, ForceMode2D.Impulse);
             }
-            if (Guns.Assault)
+            if (OtherGuns.Assault)
             {
                 Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
                 Vector2 awayFromBullet = other.transform.position - transform.position;
                 rb.AddForce(awayFromBullet * AssaultPush, ForceMode2D.Impulse);
             }
-            if (Guns.Smg)
+            if (OtherGuns.Smg)
             {
                 Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
                 Vector2 awayFromBullet = other.transform.position - transform.position;
                 rb.AddForce(awayFromBullet * SmgPush, ForceMode2D.Impulse);
             }
-            if (Guns.Minigun)
+            if (OtherGuns.Minigun)
             {
                 Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
                 Vector2 awayFromBullet = other.transform.position - transform.position;
                 rb.AddForce(awayFromBullet * MinigunPush, ForceMode2D.Impulse);
             }
-            
-            if (Guns.Shotgun)
+
+            if (OtherGuns.Shotgun)
             {
                 Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
                 Vector2 awayFromBullet = other.transform.position - transform.position;
                 rb.AddForce(awayFromBullet * shotgunpush, ForceMode2D.Impulse);
             }
-            
+
         }
        
     }
     void DestroyBullet()
     {
-       
+
         Destroy(gameObject);
     }
 }

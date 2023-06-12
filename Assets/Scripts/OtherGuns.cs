@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class Guns : MonoBehaviour
+public class OtherGuns : MonoBehaviour
 {
     public static bool Pistol = true;
     public static bool Shotgun = false;
@@ -61,7 +61,7 @@ public class Guns : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && Time.time > NextFire)
+        if (Input.GetKeyDown(KeyCode.T) && Time.time > NextFire)
         {
 
             if (Pistol)
@@ -103,7 +103,7 @@ public class Guns : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKey(KeyCode.P) && Time.time > NextFire)
+        if (Input.GetKey(KeyCode.T) && Time.time > NextFire)
         {
             if (Assault == true)
             {
@@ -135,7 +135,78 @@ public class Guns : MonoBehaviour
             }
 
             //------------------------------------------------------------------------------
-           
+            if (Input.GetKeyDown(KeyCode.P) && Time.time > NextFire)
+            {
+
+                if (Pistol2)
+                {
+
+                    NextFire = Time.time + PistolFireRate;
+                    Instantiate(Bulletprefab, transform.position, Bulletprefab.transform.rotation);
+                    Fire();
+
+                }
+                else if (Shotgun2)
+                {
+
+                    NextFire = Time.time + ShotgunFireRate;
+                    Instantiate(Bulletprefab_Shotgun[0], transform.position, Bulletprefab_Shotgun[0].transform.rotation);
+                    Instantiate(Bulletprefab_Shotgun[1], transform.position, Bulletprefab_Shotgun[1].transform.rotation);
+                    Instantiate(Bulletprefab_Shotgun[2], transform.position, Bulletprefab_Shotgun[2].transform.rotation);
+                    bulletcount++;
+                    Fire();
+                    if (bulletcount >= 16)
+                    {
+                        Shotgun = false;
+                        Pistol = true;
+                        bulletcount = 0;
+                    }
+                }
+                else if (Sniper2 == true)
+                {
+
+                    NextFire = Time.time + SniperFireRate;
+                    Instantiate(Bulletprefab, transform.position, Bulletprefab.transform.rotation);
+                    bulletcount++;
+                    Fire();
+                    if (bulletcount >= 10)
+                    {
+                        Sniper = false;
+                        Pistol = true;
+                        bulletcount = 0;
+                    }
+                }
+            }
+            if (Input.GetKey(KeyCode.P) && Time.time > NextFire)
+            {
+                if (Assault2 == true)
+                {
+
+                    Instantiate(Bulletprefab, transform.position, Bulletprefab.transform.rotation);
+                    bulletcount++;
+                    NextFire = Time.time + AssaultFireRate;
+                    Fire();
+                    if (bulletcount >= 60)
+                    {
+                        Assault = false;
+                        Pistol = true;
+                        bulletcount = 0;
+                    }
+                }
+                else if (Smg2 == true)
+                {
+
+                    NextFire = Time.time + SmgFireRate;
+                    Instantiate(Bulletprefab, transform.position, Bulletprefab.transform.rotation);
+                    bulletcount++;
+                    Fire();
+                    if (bulletcount >= 80)
+                    {
+                        Smg = false;
+                        Pistol = true;
+                        bulletcount = 0;
+                    }
+                }
 
                 /* else if (Minigun == true)
                  {
@@ -255,5 +326,5 @@ public class Guns : MonoBehaviour
             }
         }
     }
-
+}
 
